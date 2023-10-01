@@ -1,0 +1,424 @@
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.Scanner;
+
+public class Menu_deOpciones {      //llamamos a la clase
+        
+    private static String[] args;
+    public static void main(String args[]){
+        try (Scanner entrada = new Scanner(System.in)){   //Declaramos el objeto Scanner
+
+            int opcion;      //Guardamos las opcion del usuario
+
+        do{       // llamamos a la sentencia do-while, do para las intrucciones de opciones del menu
+            System.out.println("*********************");
+            System.out.println("*Menu de Opciones*");
+            System.out.println("*********************");
+
+            System.out.println("1) ARRAYLIST - GESTION DE UNA LIBRERÍA");
+            System.out.println("2) LINKEDLIST - GESTION DE INFORMACION HOSPITALARIA");
+            System.out.println("3) HASHMAP - GESTION DE INFORMAICON DE UNIVERSIDAD");
+            System.out.println("4) HASHSET - GESTION DE INFORMACION CADENA HOTELERA");
+            System.out.println("5) Salir");
+            System.out.print("Introdusca una opción: ");         // Mostramos un mensaje por pantalla
+
+            opcion = entrada.nextInt();     //Obtiene la entrada del usuario
+
+            switch(opcion){   // Utilizamos el switch para procesa las entrada del usuario
+
+                case 1:
+                ArrayList<String> arrayList = new ArrayList<>();  //se crea una instancia de la clase ArrayList llamada arrayList
+                menuArrayList(arrayList, entrada);   //El método menuArrayList muestra un menú de opciones al usuario y 
+                break;                              // le permite añadir, eliminar o buscar elementos en la lista
+                case 2:
+                LinkedList<String> linkedList = new LinkedList<>();  //se crea una instancia de la clase LinkedList llamada linkedList
+                menuLinkedList(linkedList, entrada);      ///El método menuLinkedList muestra un menú de opciones al usuario y
+                break;                                   // le permite añadir, eliminar o buscar elementos en la lista
+                case 3:
+                HashMap<String, String> hashMap = new HashMap<>();  //se crea una instancia de la clase HashMap llamada hashMap
+                menuHashMap(hashMap, entrada);          //El método menuHashMap muestra un menú de opciones al usuario y
+                break;                                 // le permite añadir, eliminar o buscar elementos en la lista
+                case 4:
+                HashSet<String> hashSet = new HashSet<>();  //se crea una instancia de la clase HashSet llamada hashSet
+                menuHashSet(hashSet, entrada);       //El método menuHashSet muestra un menú de opciones al usuario y 
+                break;                              // le permite añadir, eliminar o buscar elementos en la lista
+                case 5:
+                System.out.println("*** Opcion 5) Salir ***");
+                System.exit(0);
+                break;
+                default:
+                System.out.println("Opción inválida. Intente nuevamente.");
+                break;
+            }
+            }while(opcion != 5);   // Y en la condicion de while, si caturamos 5 se finaliza el programa
+            entrada.close();
+        }
+    }
+
+    // comenzamos a llamar a los metodos privados del menu
+    
+    private static void menuArrayList(ArrayList<String> arrayList, Scanner entrada) {
+        ArrayList<String> libros = new ArrayList<>();
+        int opcion;
+    
+        do{
+
+            System.out.println("Opcion 1 - GESTION DE UNA LIBRERÍA: ");
+
+            System.out.println("0) Ingresa los datos");
+            System.out.println("1) AGREGAR");
+            System.out.println("2) REMOVER");
+            System.out.println("3) MOSTRAR EL TAMAÑO");
+            System.out.println("4) ORDENAR");
+            System.out.println("5) Salir");
+            System.out.println("6) VOLVER AL MENU ANTERIOR");
+            System.out.print("Introdusca una opción: ");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+
+                case 0:                
+                System.out.println("      Datos del libro     "); // Mostrar los datos del libros
+
+                System.out.println("Introduce el título del libro:"); // Obtener los datos del libro del usuario.
+                String titulo = entrada.next();
+                libros.add(titulo);
+
+                System.out.println("Introduce el autor del libro: ");   
+                String autor = entrada.next();
+                libros.add(autor);
+
+                System.out.println("Introduce el precio del libro: ");
+                String precio = entrada.next();
+                if (precio.matches("[0-9]+")) {
+                    libros.add(precio);
+                } else {
+                    System.out.println("El precio debe ser un número.");
+                }
+
+                System.out.println("Introduce la cantidad del libro: ");
+                String cantidad = entrada.next();
+                 if (cantidad.matches("[0-9]+")) {  //utilizamos el metodo matches para comprobar si la variable solo contiene digitos
+                    libros.add(cantidad);    // en caso contrario que imprima un mensaje que imprima un mensaje que debe ser numeros
+                } else {
+                    System.out.println("La cantidad debe ser un número.");
+                }
+    
+                System.out.println("Libros agregado correctamente.");
+                break;
+
+                case 1:
+                System.out.println("1) Ingrese el elemento que vas agregar en la librería");  //Agregamos los elementos a libros
+                String elemento = entrada.next();   //leemos las cadenas de caracteres desde la entrada estandar      
+                libros.add(elemento);        // agregamos el elemento leido al final de la lista
+                System.out.println("El libro " + elemento + " ha sido agregado.");
+                break;
+
+                case 2:
+                System.out.println("2) Ingrese el elemento que vas a remover en la librería");  //Removemos los elementos de libros
+                String elemento2 = entrada.next();     
+                libros.remove(elemento2);          // eliminamos elemento que coincida con el elemento especificado de la lista
+                System.out.println("El elemento " + elemento2 + " ha sido eliminado de la libreria.");
+                break;
+
+                case 3:
+                System.out.println("3) El tamaño de la librería es: " + libros.size());    //Mostramos el tamaño de la libreria, 
+                break;                                                                   // en otras palabras devuelve el numero del elemento a la lista
+
+                case 4:
+                System.out.println("4) La lista que vas a ordenar en la librería es: " + libros);   //Ordenamos las librerias
+                break;
+
+                case 5:
+                System.out.println("5) Salir");
+                System.exit(0);   //finalizamos el programa con codigo de salida 0, lo que indica que termino con exito
+                break;
+
+                case 6:
+                System.out.println("6) Volviendo al menú anterior");
+                main(args);
+                break;
+
+                default:
+                System.out.println("Opción inválida. Intente nuevamente.");
+                break;
+        }       
+    }while(opcion != 5);
+    entrada.close();
+}
+
+    private static void menuLinkedList(LinkedList<String> linkedList, Scanner entrada) {  
+        LinkedList<String> hospital = new LinkedList<>();
+        int opcion;
+
+        do{
+            System.out.println("Opcion 2 - GESTION DE INFORMACION HOSPITALARIA: ");
+
+            System.out.println("0) Ingreso de datos");
+            System.out.println("1) AGREGAR AL INICIO");
+            System.out.println("2) AGREGAR AL FINAL");
+            System.out.println("3) REMOVER AL INICIO");
+            System.out.println("4) REMOVER AL FINAL");
+            System.out.println("5) MOSTRAR EL PRIMERO DE LA LISTA");
+            System.out.println("6) MOSTRAR EL ULTIMO DE LA LISTA");
+            System.out.println("7) Salir");
+            System.out.println("8) VOLVER AL MENU ANTERIOR");
+
+            System.out.print("Seleccione una opción: ");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+                case 0:
+                System.out.println("      Datos del hospital    "); // Mostrar los datos del hospital
+                System.out.println("Introduce el nombre del Hospital: "); // Obtener los datos del hospital del usuario.
+                String nombre = entrada.next();
+                hospital.add(nombre);
+
+                System.out.println("Introduce la direccion del Hospital: ");
+                String direccion = entrada.next();
+                hospital.add(direccion);
+
+                System.out.println("Introduce el numero de telefono del Hospital: ");
+                String telefono = entrada.next();
+                if (telefono.matches("[0-9]+")) {
+                    universidad.add(telefono);
+                } else {
+                    System.out.println("El telefono debe ser un número.");
+                }
+                System.out.println("Hospital se agregado correctamente.");
+                break;
+
+                case 1:
+                System.out.println("1) Ingrese el elemento que se va agregar al inicio de hospital: "); //Agregamos un elemento al inicio de la lista
+                String elemento = entrada.next();
+                hospital.addFirst(elemento);
+                System.out.println("El elemento " + elemento + " se ha agregado al incio de hospital.");
+                break;
+
+                case 2:
+                System.out.println("2) Ingrese el elemento que se va agregar al final de hospital: "); //Agregamos un elemento al final de la lista
+                String elemento2 = entrada.next();
+                hospital.addLast(elemento2);
+                System.out.println("El elemento " + elemento2 + " se ha agregado al final de hospital.");  
+                break;
+
+                case 3:
+                System.out.println("3) Ingrese el elemento que se va a remover al inicio de hospital: " + hospital.removeFirst()); //Eliminamos el primer elemento de la lista
+                break;
+
+                case 4:
+                System.out.println("4) Ingrese el elemento que se va a remover al final de hospital: " + hospital.removeLast()); //Eliminamos el último elemento de la lista
+                break;
+
+                case 5:
+                System.out.println("5) Ingrese el elemento que se va a mostrar en la primera lista de hospital: " + hospital.getFirst());  //Accedemos al primer elemento de la lista  
+                break;                                                                                                                       //sirve pero tiene un error
+
+                case 6:
+                System.out.println("6) Ingrese el elemento que se va a mostrar en la ultima lista de hospital: " + hospital.getLast()); //Accedemos al último elemento de la lista
+                break;
+
+                case 7:
+                System.out.println("7) Salir");
+                System.exit(0);
+                break;
+
+                case 8:
+                System.out.println("8) Volviendo al menú anterior");
+                main(args);
+                break;
+
+                default:
+                System.out.println("Opción inválida. Intente nuevamente.");
+                break;
+       }
+           }while(opcion != 5);
+           entrada.close();
+    }
+
+        private static void menuHashMap(HashMap<String, String> hashMap, Scanner entrada) {
+        HashMap<String, String> universidad = new HashMap<>();
+        int opcion;
+
+            do{
+            System.out.println("Opcion 3 - GESTION DE INFORMAICON DE UNIVERSIDAD: ");
+
+            System.out.println("0) Ingreso de datos");
+            System.out.println("1) AGREGAR");
+            System.out.println("2) MOSTRAR");
+            System.out.println("3) REMOVER");
+            System.out.println("4) TAMAÑO");
+            System.out.println("5) BUSCAR");
+            System.out.println("6) Salir");
+            System.out.println("7) VOLVER AL MENU ANTERIOR");
+
+            System.out.print("Seleccione una opción: ");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+                case 0:
+                System.out.println("      Datos de la universidad     "); // Mostrar los datos del universidad
+                System.out.println("Introduce el nombre de la universidad: ");  // Obtener los datos del universidad del usuario
+                String nombres = entrada.next();
+
+                System.out.println("Introduce tu carrra en la que estas en la universidad: ");
+                String carrera = entrada.next();
+
+                System.out.println("Introduce el correo eletronico de la universidad: ");
+                String correo_eletronico = entrada.next();
+                universidad.put(nombres, nombres);
+                universidad.put(correo_eletronico, correo_eletronico);
+                universidad.put(carrera, carrera);
+                break;
+
+                case 1:
+                System.out.println("1) Ingrese el elemento que se va agregar a la universidad");  //agregamos un elemento a la lista
+                String elemento = entrada.next();
+                universidad.put(elemento, elemento);
+                System.out.println("La Universidad " + elemento + " ha sido agregada.");
+                break;
+
+                case 2:
+                System.out.println("2) Ingrese el elemento que se va a mostrar a la universidad: "); //iteramos las claves de la lista para que cada clave nos pueda mostra el valor 
+                for (String elemento3 : universidad.keySet()) {
+                System.out.println(elemento3 + " -> " + universidad.get(elemento3));
+                }
+                break;
+
+                case 3:
+                System.out.println("3) Ingrese el elemento que se va a remover a la universidad"); //eliminamos un elemento a la lista
+                String elemento2 = entrada.next();
+                universidad.remove(elemento2);
+                System.out.println("El elemento " + elemento2 + " ha sido eliminado del menú.");
+                break;
+
+                case 4:
+                System.out.println("4) Mostrando el tamaño de la universidad: " + universidad.size());  //devuelve el número de pares de las clave y valor en la lista
+                break;
+
+                case 5:
+                System.out.println("5) Ingrese el elemento que se va a busqueda a la universidad: ");  //sirve pero tiene error
+                String elemento4 = entrada.next();
+                if (universidad.containsKey(elemento4)) {
+                System.out.println("La Universidad existe en el buscador.");
+                } else {
+                System.out.println("La Universidad no existe en el buscador.");
+                }
+                break;
+
+                case 6:
+                System.out.println("6) Salir");
+                System.exit(0);
+                break;
+
+                case 7:
+                System.out.println("7) Volviendo al menú anterior");
+                main(args);
+                break;
+
+                default:
+                System.out.println("Opción inválida. Intente nuevamente.");
+                break;
+       }
+           }while(opcion != 5);
+           
+    }
+
+        private static void menuHashSet(HashSet<String> hashSet, Scanner entrada) {
+        HashSet<String> hoteles = new HashSet<>();
+        int opcion;
+
+         do{
+            System.out.println("Opcion 4 - GESTION DE INFORMACION CADENA HOTELERA: ");
+
+            System.out.println("0) Ingreso de datos");
+            System.out.println("1) AGREGAR");
+            System.out.println("2) MOSTRAR");
+            System.out.println("3) REMOVER");
+            System.out.println("4) BUSCAR");
+            System.out.println("5) Salir");
+            System.out.println("6) VOLVER AL MENU ANTERIOR");
+
+            System.out.print("Seleccione una opción: ");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+                case 0:              
+                System.out.println("      Datos de hotel     "); // Mostrar los datos de hotel
+                System.out.println("Introduzca el nombre del hotel: ");  // Obtener los datos de los hoteles del usuario
+                String nombres2 = entrada.next();
+                hoteles.add(nombres2);
+
+                System.out.println("Introduce la dirección del hotel: ");
+                String direccion2 = entrada.next();
+                hoteles.add(direccion2);
+
+                System.out.println("Introduce el número de teléfono del hotel: ");
+                String telefonos2 = entrada.next();
+                if (telefonos2.matches("[0-9]+")) {
+                    hoteles.add(telefonos2);
+                } else {
+                    System.out.println("El telefono debe ser un número.");
+                }
+
+                System.out.println("Introdusce el numero de ID: ");
+                String ID = entrada.next();
+                if (ID.matches("[0-9]+")) {
+                    hoteles.add(ID);
+                } else {
+                    System.out.println("El ID debe ser un número.");
+                }
+                System.out.println("Hospital se agregado correctamente.");
+                break;
+
+                case 1:
+                System.out.println("1) Ingrese el elemento que se va agregar en el hotel: ");  //agregamos un elemento a la lista
+                String elemento = entrada.next();
+                hoteles.add(elemento);
+                System.out.println("La Universidad " + elemento + " ha sido agregada.");
+                break;
+
+                case 2:
+                System.out.println("2) Ingrese el elemento que se va a mostrar en el hotel: ");  
+                for (String elemento2 : hoteles) {
+                System.out.println(elemento2);
+                }
+                break;
+
+                case 3:
+                System.out.println("3) Ingrese el elemento que se va a remover en el hotel: ");  //eliminamos un elemento a la lista
+                String elemento2 = entrada.next();
+                hoteles.remove(elemento2);
+                System.out.println("La Universidad " + elemento2 + " ha sido agregada.");
+                break;
+
+                case 4:
+                System.out.println("4) Ingrese el elemento que se va a busquedar en el hotel: "); //solicitamos al usuario ingrese el elemento que desea buscar en el hotel y 
+                String elemento4 = entrada.next();                                                 //lo guarda en la variable "elemento4"
+                if (hoteles.contains(elemento4)) {   //utilizamos el metodo contains para comprobar si el elemento se encuentra
+                    System.out.println("El elemento " + elemento4 + " se encuentra en el hotel.");
+                } else {
+                    System.out.println("El elemento " + elemento4 + " no se encuentra en el hotel.");
+                }     
+                break;
+
+                case 5:
+                System.out.println("5) Salir");
+                System.exit(0);
+                break;
+
+                case 6:
+                System.out.println("6) Volviendo al menú anterior");
+                main(args);
+                break;
+
+                default:
+                System.out.println("Opción inválida. Intente nuevamente.");
+                break;
+       }
+           }while(opcion != 5);
+           entrada.close();
+      }
+}

@@ -1,0 +1,45 @@
+public class universidad {
+    private String nombre;
+    private String carrera;
+    private String correo_electronico;
+                
+        public universidad(String nombre, String carrera, String correo_electronico) {     //construimos con parámetros                             
+            this.nombre = nombre;
+            this.carrera = carrera;
+            this.correo_electronico = correo_electronico;
+        }
+        
+        public String getnombre() {           //utilizamos getters y setters
+            return nombre;
+        }
+        public String getcarrera() {
+            return carrera;
+        }
+        public void setcarreras(String carrera) {
+            this.carrera = carrera;
+        }
+        public String getcorreo_electronico() {
+            return correo_electronico;
+        }
+        public void setcorreo_electronico(String correo_electronico) {
+            this.correo_electronico = correo_electronico;
+        }
+        public void setnombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public void put(String nombres, universidad universidad) {
+        }
+        
+        public String toString() {   //utilizamos tostring para que devuelva una cadena de los objetos
+            return "nombre: " + nombre + "\ncarrera: " + carrera +
+                      "\necorreo_electronico: " + correo_electronico;                                    
+        }
+
+        public static void add(universidad universidad) {
+        }
+
+        public static void add(String string) {
+        }
+        
+}

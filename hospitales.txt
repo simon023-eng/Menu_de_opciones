@@ -1,0 +1,39 @@
+public class hospital {
+    private String nombre;
+    private String direccion;
+    private int telefono;
+    
+        public static void add(hospital hospital) {
+        }
+    
+        public hospital(String nombre, String direccion, int telefono) {     //construimos con parámetros                             
+            this.nombre = nombre;
+            this.direccion = direccion;
+            this.telefono = telefono;
+        }
+    
+        public String getnombre() {           //utilizamos getters y setters
+            return nombre;
+        }
+        public String getdireccion() {
+            return direccion;
+        }
+        public void setdireccions(String direccion) {
+            this.direccion = direccion;
+        }
+        public int gettelefono() {
+            return telefono;
+        }
+        public void settelefono(int telefono) {
+            this.telefono = telefono;
+        }
+        public void setnombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String toString() {      //utilizamos tostring para que devuelva una cadena de los objetos
+            return "nombre: " + nombre + "\ndireccion: " + direccion +
+                      "\netelefono: " + telefono;                                    
+        }
+    
+    }

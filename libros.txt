@@ -1,0 +1,66 @@
+import java.util.ArrayList;
+
+public class libros {
+    private String titulo;
+    private String autor;
+    private double precio;
+    private int cantidad;
+
+    public static void add(libros libros) {
+    }
+
+    public libros(String titulo, String autor, double precio, int cantidad) {          //construimos con parámetros                             
+        this.titulo = titulo;
+        this.autor = autor;
+        this.precio = (int) precio;
+        this.cantidad = cantidad;
+    }
+
+    public String gettitulo() {                  //utilizamos getters y setters
+        return titulo;
+    }
+    public void setautor(String autor) {
+        this.autor = autor;
+    }
+    public double getprecio() {
+        return precio;
+    }
+    public void setprecios(double precio) {
+        this.precio = precio;
+    }
+    public int getcantidad() {
+        return cantidad;
+    }
+    public void setcantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+    public String getautor() {
+        return autor;
+    }
+    public void settitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String toString() {      //utilizamos tostring para que devuelva una cadena de los objetos
+        return "titulo: " + titulo + "\nautor: " + autor +
+                  "\neprecio: " + precio + "\ncantidad: " + cantidad;                                    
+    }
+
+    public static void remove(String tituloARemover) {
+    }
+
+    public static int size() {
+        return 0;
+    }
+
+    public static void addAll(libros libros2) {
+    }
+
+    public static void add(String string) {
+    }
+
+    public void add(ArrayList<libros> libros) {
+    }
+
+
+}

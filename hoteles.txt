@@ -1,0 +1,46 @@
+public class hoteles {
+    private String nombre;
+    private String direccion;
+    private int telefono;
+    private int ID;
+        
+        public static void add(hoteles hoteles) {
+        }
+        
+        public hoteles(String nombre, String direccion, int telefono, int ID) {     //construimos con parámetros                             
+            this.nombre = nombre;
+            this.direccion = direccion;
+            this.telefono = telefono;
+            this.ID = ID;
+        }
+        
+        public String getnombre() {           //utilizamos getters y setters
+            return nombre;
+        }
+        public String getdireccion() {
+            return direccion;
+        }
+        public void setdireccions(String direccion) {
+            this.direccion = direccion;
+        }
+        public int gettelefono() {
+            return telefono;
+        }
+        public void settelefono(int telefono) {
+            this.telefono = telefono;
+        }
+        public int getID() {
+            return ID;
+        }
+        public void setID(int ID) {
+            this.ID = ID;
+        }
+        public void setnombre(String nombre) {
+            this.nombre = nombre;
+        }
+
+        public String toString() {    //utilizamos tostring para que devuelva una cadena de los objetos
+            return "nombre: " + nombre + "\ndireccion: " + direccion +
+                      "\netelefono: " + telefono + "\nID: " + ID;                                    
+        }
+}
