@@ -301,7 +301,7 @@ public class Menu_deOpciones {      //llamamos a la clase
                 case 5:
                 System.out.println("5) Ingrese el elemento que se va a busqueda a la universidad: ");  //sirve pero tiene error
                 String elemento4 = entrada.next();
-                if (universidad.containsKey(elemento4)) {
+                if (universidad.containsValue(elemento4)) {
                 System.out.println("La Universidad existe en el buscador.");
                 } else {
                 System.out.println("La Universidad no existe en el buscador.");
